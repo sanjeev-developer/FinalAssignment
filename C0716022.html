@@ -1,18 +1,116 @@
 <html>
-	<font size="8" color="green">Final test lab</font><br><br>
-	Number of rows: <input type="text" id="t1" /><br><br>
-	Number of cols: <input type="text" id="t2" /><br><br>
-	
-	<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
-	
-	<button id="b2" onclick="addColumn()">Add Column</button>
-	
-	<button id="b3" onclick="addRow()">Add Row</button>
-		
+
+
+		<div id="form">
+
+
+			<font size="8" color="green">Final test lab</font><br><br>
+			Number of rows: <input type="text" id="t1" /><br><br>
+			Number of cols: <input type="text" id="t2" /><br><br>
+			<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+
+		</div>
+
+		<button id="b2" onclick="addColumn()">Add Column</button>
+
+		<button id="b3" onclick="addRow()">Add Row</button>
+
+	<div id="myDynamicTable"></div>
+
 	<script language="javascript">
-		
+
 		//Your code goes here
-	
+
+		var rowsize = 0;
+		var colsize = 0;
+
+	function generateTable() {
+
+
+
+		document.getElementById("myDynamicTable").innerHTML = "";
+
+		 rowsize = document.getElementById("t1").value;
+		 colsize = document.getElementById("t2").value;
+
+		 alert(rowsize);
+    var myTableDiv = document.getElementById("myDynamicTable");
+
+  var table = document.createElement('TABLE');
+  table.border = '1';
+
+  var tableBody = document.createElement('TBODY');
+  table.appendChild(tableBody);
+
+  for (var i = 0; i < rowsize; i++) {
+    var tr = document.createElement('TR');
+    tableBody.appendChild(tr);
+
+    for (var j = 0; j < colsize; j++) {
+      var td = document.createElement('TD');
+      td.width = '150';
+      td.appendChild(document.createTextNode("Row = " + i + ", col = " + j));
+      tr.appendChild(td);
+    }
+  }
+  myTableDiv.appendChild(table);
+		document.getElementById("form").innerHTML = "";
+}
+
+function addColumn() {
+
+	document.getElementById("myDynamicTable").innerHTML = "";
+	colsize++;
+	var myTableDiv = document.getElementById("myDynamicTable");
+
+var table = document.createElement('TABLE');
+table.border = '1';
+
+var tableBody = document.createElement('TBODY');
+table.appendChild(tableBody);
+
+for (var i = 0; i < rowsize; i++) {
+	var tr = document.createElement('TR');
+	tableBody.appendChild(tr);
+
+	for (var j = 0; j < colsize; j++) {
+		var td = document.createElement('TD');
+		td.width = '150';
+		td.appendChild(document.createTextNode("Row = " + i + ", col = " + j));
+		tr.appendChild(td);
+	}
+}
+myTableDiv.appendChild(table);
+}
+
+function addRow() {
+
+	document.getElementById("myDynamicTable").innerHTML = "";
+
+	rowsize++;
+	var myTableDiv = document.getElementById("myDynamicTable");
+
+var table = document.createElement('TABLE');
+table.border = '1';
+
+var tableBody = document.createElement('TBODY');
+table.appendChild(tableBody);
+
+for (var i = 0; i < rowsize; i++) {
+	var tr = document.createElement('TR');
+	tableBody.appendChild(tr);
+
+	for (var j = 0; j < colsize; j++) {
+		var td = document.createElement('TD');
+		td.width = '150';
+		td.appendChild(document.createTextNode("Row = " + i + ", col = " + j));
+		tr.appendChild(td);
+	}
+}
+myTableDiv.appendChild(table);
+}
+//addTable();
+
 	</script>
-	
+
 </html>
